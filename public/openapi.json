@@ -1,0 +1,65 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Appointment Booking Tool",
+    "version": "1.0.0",
+    "description": "Books an appointment with the client’s details and incident summary."
+  },
+  "paths": {
+    "/invoke": {
+      "post": {
+        "operationId": "bookAppointment",
+        "summary": "Book an appointment",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "toolInput": {
+                    "type": "object",
+                    "properties": {
+                      "name": { "type": "string" },
+                      "email": { "type": "string" },
+                      "phone": { "type": "string" },
+                      "preferredDate": { "type": "string", "format": "date" },
+                      "preferredTime": { "type": "string", "enum": ["morning", "afternoon"] },
+                      "incidentSummary": { "type": "string" }
+                    },
+                    "required": ["name", "email", "phone", "preferredDate", "preferredTime", "incidentSummary"]
+                  }
+                }
+              },
+              "example": {
+                "toolInput": {
+                  "name": "Claire",
+                  "email": "claire@example.com",
+                  "phone": "+17801234567",
+                  "preferredDate": "2025-06-10",
+                  "preferredTime": "morning",
+                  "incidentSummary": "Rear-end collision on 178th Street causing lower back pain."
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Booking confirmation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "output": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

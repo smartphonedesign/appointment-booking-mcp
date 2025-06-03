@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_model": "appointment_booker",
+  "name_for_human": "Appointment Booker",
+  "description_for_model": "Books an appointment based on client's name, email, phone number, preferred date/time, and a short incident summary.",
+  "description_for_human": "Book a lawyer appointment using name, email, phone, preferred date/time, and case summary.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://yourdomain.com/openapi.json"
+  },
+  "logo_url": "https://yourdomain.com/logo.png",
+  "contact_email": "you@example.com",
+  "legal_info_url": "https://yourdomain.com/legal"
+}
