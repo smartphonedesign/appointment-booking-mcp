@@ -26,7 +26,7 @@ app.use('/.well-known', express.static(path.join(__dirname, 'public/.well-known'
 app.use('/openapi.json', express.static(path.join(__dirname, 'public/openapi.json')));
 
 // Endpoint for booking
-app.post('/', async (req, res) => {
+app.post('/invoke', async (req, res) => {
   console.log('📥 Received input:', JSON.stringify(req.body, null, 2));
   const { name, email, phone, time, summary } = req.body;
 
