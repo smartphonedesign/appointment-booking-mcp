@@ -36,7 +36,7 @@ app.post('/invoke', async (req, res) => {
     attendee: {
       name,
       email,
-      phone,
+      phoneNumber: phone,
       timeZone: TIMEZONE
     },
     bookingFieldsResponses: {
