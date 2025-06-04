@@ -1,17 +1,18 @@
 {
   "schema_version": "v1",
-  "name_for_model": "appointment_booker",
-  "name_for_human": "Appointment Booker",
-  "description_for_model": "Books an appointment based on client's name, email, phone number, preferred date/time, and a short incident summary.",
-  "description_for_human": "Book a lawyer appointment using name, email, phone, preferred date/time, and case summary.",
+  "name_for_human": "Appointment Booking Tool",
+  "name_for_model": "appointment_booking",
+  "description_for_human": "Book a consultation appointment via Cal.com.",
+  "description_for_model": "Use this tool to book appointments by sending name, email, phone number, preferred time, and a short summary. The time must be in ISO 8601 format (UTC).",
   "auth": {
     "type": "none"
   },
   "api": {
     "type": "openapi",
-    "url": "https://yourdomain.com/openapi.json"
+    "url": "https://appointment-booking-mcp.onrender.com/openapi.json",
+    "is_user_authenticated": false
   },
-  "logo_url": "https://yourdomain.com/logo.png",
-  "contact_email": "you@example.com",
-  "legal_info_url": "https://yourdomain.com/legal"
+  "logo_url": "https://appointment-booking-mcp.onrender.com/.well-known/logo.png",
+  "contact_email": "support@example.com",
+  "legal_info_url": "https://appointment-booking-mcp.onrender.com/legal"
 }

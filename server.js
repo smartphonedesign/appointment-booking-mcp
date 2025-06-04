@@ -4,19 +4,28 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import axios from 'axios';
 import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Load Cal.com API key and event type ID from env vars
 const CAL_API_KEY = process.env.CAL_API_KEY;
-const EVENT_TYPE_ID = process.env.EVENT_TYPE_ID || 2576576;
+const EVENT_TYPE_ID = process.env.EVENT_TYPE_ID || '2576576';
 const TIMEZONE = 'America/Edmonton';
 
 app.use(bodyParser.json());
 
+// Serve metadata for MCP
+app.use('/.well-known', express.static(path.join(__dirname, 'public/.well-known')));
+app.use('/openapi.json', express.static(path.join(__dirname, 'public/openapi.json')));
+
+// Endpoint for booking
 app.post('/', async (req, res) => {
   console.log('📥 Received input:', JSON.stringify(req.body, null, 2));
   const { name, email, phone, time, summary } = req.body;
@@ -27,6 +36,7 @@ app.post('/', async (req, res) => {
     attendee: {
       name,
       email,
+      phone,
       timeZone: TIMEZONE
     },
     bookingFieldsResponses: {
@@ -62,5 +72,5 @@ app.post('/', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`📞 Booking MCP tool running on port ${PORT}`);
+  console.log(`📞 Booking MCP tool running on http://localhost:${PORT}`);
 });
