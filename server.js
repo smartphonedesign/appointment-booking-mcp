@@ -40,7 +40,7 @@ app.post('/invoke', async (req, res) => {
       timeZone: TIMEZONE
     },
     bookingFieldsResponses: {
-      summary
+      notes: summary
     }
   };
 
